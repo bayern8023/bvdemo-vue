@@ -1,0 +1,13 @@
+version: '3'
+services:
+  vue-server:
+    restart: always
+    build: ./bvdemo-vue
+    image: "vue:image-version"
+    networks:
+      - finance-net
+    ports:
+      - "9527:9527"
+networks:
+  finance-net:
+    driver: bridge                      #以桥接模式创建自定义网络，否则会使用默认的网络

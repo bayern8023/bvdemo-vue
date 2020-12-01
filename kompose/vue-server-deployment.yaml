@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose -f docker-compose.yml convert
+    kompose.version: 1.7.0 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: vue-server
+  name: vue-server
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: vue-server
+    spec:
+      containers:
+      - image: swr.cn-north-4.myhuaweicloud.com/cmccvideo/vue:image-version
+        name: vue-server
+        ports:
+        - containerPort: 80
+        resources: {}
+      imagePullSecrets:
+      - name: regcred
+      restartPolicy: Always
+status: {}

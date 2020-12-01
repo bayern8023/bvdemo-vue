@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose -f docker-compose-vue.yml convert
+    kompose.version: 1.7.0 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: vue-server
+  name: vue-server
+spec:
+  ports:
+  - name: "9527"
+    port: 9527
+    targetPort: 80
+  selector:
+    io.kompose.service: vue-server
+status:
+  loadBalancer: {}
